@@ -1,11 +1,12 @@
 package com.liqihua.demo3;
 
+import com.liqihua.config.MQConfig;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
 /**
- * 发布/订阅：一个消息发送到多个队列：一对多（一个消息只能被多个接收者消费）
+ * fanout（分发）交换机：一个消息发送到多个队列
  */
 public class SendC {
 	//交换机名称
@@ -17,10 +18,10 @@ public class SendC {
 			 * 打开连接、创建频道
 			 */
 			ConnectionFactory factory = new ConnectionFactory();
-	        factory.setHost("119.23.130.114");
-	        factory.setPort(9222);
-	        factory.setUsername("name1");
-	        factory.setPassword("123");
+			factory.setHost(MQConfig.HOST);
+			factory.setPort(MQConfig.PORT);
+			factory.setUsername(MQConfig.USERNAME);
+			factory.setPassword(MQConfig.PASSWORD);
 	        Connection connection = factory.newConnection();
 	        Channel channel = connection.createChannel();
 	        //channel.queueDeclare(QUEUE_NAME, false, false, false, null);

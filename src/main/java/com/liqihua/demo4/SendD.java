@@ -1,5 +1,6 @@
 package com.liqihua.demo4;
 
+import com.liqihua.config.MQConfig;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -23,10 +24,10 @@ public class SendD {
 			 * 打开连接、创建频道
 			 */
 			ConnectionFactory factory = new ConnectionFactory();
-	        factory.setHost("119.23.130.114");
-	        factory.setPort(9222);
-	        factory.setUsername("name1");
-	        factory.setPassword("123");
+			factory.setHost(MQConfig.HOST);
+			factory.setPort(MQConfig.PORT);
+			factory.setUsername(MQConfig.USERNAME);
+			factory.setPassword(MQConfig.PASSWORD);
 	        Connection connection = factory.newConnection();
 	        Channel channel = connection.createChannel();
 	        //channel.queueDeclare(QUEUE_NAME, false, false, false, null);

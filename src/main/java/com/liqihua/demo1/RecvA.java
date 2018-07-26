@@ -1,5 +1,6 @@
 package com.liqihua.demo1;
 
+import com.liqihua.config.MQConfig;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
@@ -14,10 +15,10 @@ public class RecvA {
          * 打开连接、创建频道
          */
         ConnectionFactory factory = new ConnectionFactory();  
-        factory.setHost("120.76.235.147");
-        factory.setPort(9222);
-        factory.setUsername("6602f7c77607468bb785bc41034bbe79");
-        factory.setPassword("059c74be19504d36a7b1878bee23666556427639adeb497fa08b5828defdc4b2");
+        factory.setHost(MQConfig.HOST);
+        factory.setPort(MQConfig.PORT);
+        factory.setUsername(MQConfig.USERNAME);
+        factory.setPassword(MQConfig.PASSWORD);
         Connection connection = factory.newConnection();  
         Channel channel = connection.createChannel();  
         /*

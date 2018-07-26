@@ -1,11 +1,12 @@
 package com.liqihua.demo3;
 
+import com.liqihua.config.MQConfig;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
 
 /**
- * 多个消费者平均分接消息
+ * 多个队列的消费者接收消息
  * 手动答应消息
  */
 public class RecvC1 {
@@ -19,10 +20,10 @@ public class RecvC1 {
 	         * 打开连接、创建频道
 	         */
 	        ConnectionFactory factory = new ConnectionFactory();
-	        factory.setHost("119.23.130.114");
-	        factory.setPort(9222);
-	        factory.setUsername("name1");
-	        factory.setPassword("123"); 
+			factory.setHost(MQConfig.HOST);
+			factory.setPort(MQConfig.PORT);
+			factory.setUsername(MQConfig.USERNAME);
+			factory.setPassword(MQConfig.PASSWORD);
 	        Connection connection = factory.newConnection();
 	        final Channel channel = connection.createChannel();
 	        //channel.queueDeclare(QUEUE_NAME, false, false, false, null);
